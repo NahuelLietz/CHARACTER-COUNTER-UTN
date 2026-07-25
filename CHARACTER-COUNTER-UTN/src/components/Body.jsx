@@ -3,6 +3,7 @@ import icono from '../assets/icono.png'
 import icono_tema from '../assets/icono_de_tema.png'
 import '../styles/body.css'
 import { BotonDeTema } from './BotonDeTema.jsx'
+import {CounterCharacter} from  './CounterCharacter.jsx'
 function Body(){
     
     return(
@@ -23,21 +24,12 @@ function Body(){
                     </div>
 
                 <BotonDeTema/>
-
                 </div>
-
-
             <div className = "tittle-card">
                 <h1><span>Analyze your text in real-time.</span></h1>
             </div>  
 
-            <textarea 
-            name = "textarea" 
-            className = "textarea" 
-            rows = "5"
-            >
-                Design is the silent ambassor of your brand. Simplicity is key to effective communication, creating clarity in every interaction. A great design transforms complex ideas into elegant solutions, making them easy to understand. It blends aesthetics and functionality seamlessly.
-            </textarea>
+            <CounterCharacter cantidadDeLetras = {(cantidad) => setCantidadDeLetras(cantidad)}/>
             
             <div className = "checkbox">
 
@@ -53,11 +45,7 @@ function Body(){
                         />
                         Exclude spaces
                     </label>
-            
-                    
-
-                </div>   
-
+                </div>  
                 <p>Approx. reading time: 1minute </p>
 
             </div>
