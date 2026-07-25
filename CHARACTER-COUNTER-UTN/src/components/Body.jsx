@@ -54,16 +54,7 @@ function Body(){
                         Exclude spaces
                     </label>
             
-                    <label 
-                    htmlFor="exclude spaces" 
-                    style={{ cursor: 'pointer' }}>
-
-                    </label>
-
-                    <label 
-                    htmlFor="set character limit" 
-                    style={{ cursor: 'pointer' }}>
-                    </label>
+                    
 
                 </div>   
 
