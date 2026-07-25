@@ -1,0 +1,53 @@
+
+/* Estilos por defecto (Modo Claro) */
+/* Modo Claro por defecto */
+:root {
+  --fondo-principal: #F4F5F9;
+  --fondo-de-cards-textarea: #FFFFFF;
+  --texto-principal: #12131A;
+  --texto-secundario: #5C6073;
+  --card-violeta: #8D46E8;
+  --card-naranja: #D98200;
+  --card-coral: #E65100;
+  --barras-de-progreso: #8D46E8;
+  --bordes-sutiles: #E1E3ED;
+    
+}
+
+/* Modo Oscuro cuando se activa la clase */
+body.dark-theme {
+  --fondo-principal: #12131A;
+  --fondo-de-cards-textarea: #1C1F2A;
+  --texto-principal: #F2F2F7;
+  --texto-secundario: #B4B7C9;
+  --card-violeta: #C99DFF;
+  --card-naranja: #FFB21E;
+  --card-coral: #FF8A65;
+  --barras-de-progreso: #D19BFF;
+  --bordes-sutiles: #2A2D3A;
+}
+body {
+  background-color: #f4f4f9;
+  color: #1a1a1a;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-card-flex {
+  background-color: #ffffff;
+}
+
+/* Estilos cuando la clase .dark-theme está activa */
+body.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-theme .main-card-flex {
+  background-color: #1e1e1e;
+}
+
+body.dark-theme .textarea {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border-color: #444444;
+}

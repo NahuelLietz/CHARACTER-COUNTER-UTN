@@ -1,48 +1,78 @@
 import { useState } from 'react'
+import icono from '../assets/icono.png'
+import icono_tema from '../assets/icono_de_tema.png'
+import '../styles/body.css'
+import { BotonDeTema } from './BotonDeTema.jsx'
 function Body(){
     
     return(
         <>
-        <div className = "main-flex">
+        
 
             <div className = "main-card-flex">
 
                 <div className = "header-flex">
                     <div className = "header-card">   
-                    <img src = "img\icono.png" alt = "icono de la aplicacion"/>
+                    <img 
+                    src = {icono} 
+                    alt = "icono de la aplicacion" 
+                    id='icono-de-la-aplicacion'/>
+                    
                     <h2>Character Counter</h2>   
 
+                    </div>
+
+                <BotonDeTema/>
+
                 </div>
-
-                <img src = "img\icono_de_tema.png" alt = "boton de tema"/>
-
-            </div>
 
 
             <div className = "tittle-card">
                 <h1><span>Analyze your text in real-time.</span></h1>
             </div>  
 
-            <textarea name = "textarea" className = "textarea" rows = "5" >Design is the silent ambassor of your brand. Simplicity is key to effective communication, creating clarity in every interaction. A great design transforms complex ideas into elegant solutions, making them easy to understand. It blends aesthetics and functionality seamlessly.</textarea>
+            <textarea 
+            name = "textarea" 
+            className = "textarea" 
+            rows = "5"
+            >
+                Design is the silent ambassor of your brand. Simplicity is key to effective communication, creating clarity in every interaction. A great design transforms complex ideas into elegant solutions, making them easy to understand. It blends aesthetics and functionality seamlessly.
+            </textarea>
             
             <div className = "checkbox">
-                <div className = "checkbox-pointer">
-                    <label for = "exclude spaces" style = "cursor: pointer;">
-                        <input type = "checkbox" name = "exclude spaces" id = "exclude spaces"/>
 
-                    Exclude spaces
+                <div className = "checkbox-pointer">
+
+                    <label 
+                    htmlFor="exclude spaces" 
+                    style={{ cursor: 'pointer' }}
+                    >
+                        <input type="checkbox" 
+                        name="exclude spaces" 
+                        id="exclude spaces"
+                        />
+                        Exclude spaces
                     </label>
             
-                    <input type = "checkbox" name = "set character limit" id = "set character limit"/>
-                    <label for = "set character limit" style = "cursor: pointer;">Set character limit</label>
+                    <label 
+                    htmlFor="exclude spaces" 
+                    style={{ cursor: 'pointer' }}>
+
+                    </label>
+
+                    <label 
+                    htmlFor="set character limit" 
+                    style={{ cursor: 'pointer' }}>
+                    </label>
 
                 </div>   
+
                 <p>Approx. reading time: 1minute </p>
 
             </div>
 
             <div className="counter-flexbox">
-                <div className="card characters-card"flex-grow="1">
+                <div className="card characters-card" style={{flexGrow: 1}}>
                     <div className="card-num">
                         <p>278</p>
 
@@ -54,7 +84,7 @@ function Body(){
                     </div>
                 </div>
 
-                <div className="card word-card"flex-grow="1">
+                <div className="card word-card" style={{flexGrow: 1}}>
                     <div className="card-num">
                         <p>39</p>
 
@@ -66,7 +96,7 @@ function Body(){
                     </div>
                 </div>
 
-                <div className="card sentence-card"flex-grow="1" >
+                <div className="card sentence-card"  style={{flexGrow: 1}} >
                     <div className="card-num">
                         <p>04</p>
 
@@ -90,7 +120,7 @@ function Body(){
                         <p>E</p>
 
                         <div className="progress-bar">
-                            <div className="fillA"></div>
+                            <div className="barra-1"></div>
 
                     </div>
                     <p>40(16.06%)</p>
@@ -101,7 +131,7 @@ function Body(){
                         <p>I</p>
 
                         <div className="progress-bar">
-                            <div className="fillE"></div>
+                            <div className="barra-2"></div>
 
                     </div>
                     <p>29(11.65%)</p>
@@ -111,7 +141,7 @@ function Body(){
                     <div className="flex-progress-bar">
                         <p>T</p>
                         <div className="progress-bar">
-                            <div className="fillI"></div>
+                            <div className="barra-3"></div>
                     </div>
 
                     <p>28(11.24%)</p>
@@ -123,7 +153,7 @@ function Body(){
                         <p>O</p>
 
                         <div className="progress-bar">
-                            <div className="fillO"></div>
+                            <div className="barra-4"></div>
 
                         </div>
                         <p>22(08.84%)</p>
@@ -133,7 +163,7 @@ function Body(){
                         <p>N</p>
 
                         <div className="progress-bar">
-                            <div className="fillU">
+                            <div className="barra-5">
                             </div>
                         
                         </div>
@@ -145,7 +175,7 @@ function Body(){
             
             </div>
 
-        </div>
+        
     
         </>
     )
