@@ -12,7 +12,7 @@ function BotonDeTema(){
         }
     }, [tema])
     const cambiarTema = () => {
-        setTema(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'))
+        setTema(prevTheme => (prevTheme === 'dark' ? 'light' : 'dark'))
     }
 
     return(
@@ -29,7 +29,7 @@ function BotonDeTema(){
             }}
         >
             <img 
-                src={tema === 'light' ? icono_claro :icono_oscuro} 
+                src={tema === 'dark' ?  icono_oscuro:icono_claro} 
                 alt={`Cambiar a modo ${tema === 'light' ? 'oscuro' : 'claro'}`}
                 style={{ width: '32px', height: '32px' }} 
             />

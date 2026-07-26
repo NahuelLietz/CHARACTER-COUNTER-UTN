@@ -3,8 +3,41 @@ import icono from '../assets/icono.png'
 import icono_tema from '../assets/icono_de_tema.png'
 import '../styles/body.css'
 import { BotonDeTema } from './BotonDeTema.jsx'
-import {CounterCharacter} from  './CounterCharacter.jsx'
+
 function Body(){
+    /*TextArea*/
+    const [textArea,setTextArea] = useState('')
+    
+    const [excluirEspacios,setExcluirEspacios] = useState(false)
+    
+    const cantidadDeLetras = excluirEspacios 
+    ? textArea.replace(/\s+/g, "") 
+    : textArea;
+
+    const cantidadDePalabras = textArea.trim() === ''
+    ?0: textArea.trim().split(/\s+/).length;
+    
+    const cantidadDeOraciones = textArea.trim() === ''?
+    0 : textArea.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0).length;
+    const textAreaCompleto = textArea.trim().split(/\s+/)
+    let primeraLetra, segundaLetra, terceraLetra, cuartaLetra, quintaLetra;
+    
+    const conteoLetras = [];
+    const textoLimpio = textArea ? textArea.toLowerCase().replace(/[^a-záéíóúñ]/g, "") : "";
+
+    for (let i = 0; i < textoLimpio.length; i++) {
+    const caracter = textoLimpio[i];
+    const elementoExistente = conteoLetras.find(item => item.letra === caracter);
+
+    if (elementoExistente) {
+        elementoExistente.contador += 1;
+    } else {
+        conteoLetras.push({ letra: caracter, contador: 1 });
+    }
+    }
+
+    conteoLetras.sort((a, b) => b.contador - a.contador);
+    const top5Letras = conteoLetras.slice(0, 5);
     
     return(
         <>
@@ -29,10 +62,18 @@ function Body(){
                 <h1><span>Analyze your text in real-time.</span></h1>
             </div>  
 
-            <CounterCharacter cantidadDeLetras = {(cantidad) => setCantidadDeLetras(cantidad)}/>
-            
+            <textarea
+                
+                className='textarea'
+                rows="5"
+                value={textArea}
+                onChange={(e) => setTextArea(e.target.value)}
+                placeholder="Escribe algo aquí..."
+                spellCheck={false} /* desabillita el autocorrector de la web */
+                />
+                        
             <div className = "checkbox">
-
+                
                 <div className = "checkbox-pointer">
 
                     <label 
@@ -42,6 +83,8 @@ function Body(){
                         <input type="checkbox" 
                         name="exclude spaces" 
                         id="exclude spaces"
+                        checked = {excluirEspacios}
+                        onChange={(e) => setExcluirEspacios(e.target.checked)}
                         />
                         Exclude spaces
                     </label>
@@ -49,11 +92,13 @@ function Body(){
                 <p>Approx. reading time: 1minute </p>
 
             </div>
+            
 
             <div className="counter-flexbox">
                 <div className="card characters-card" style={{flexGrow: 1}}>
                     <div className="card-num">
-                        <p>278</p>
+                        <p >
+                        {cantidadDeLetras.length}</p>
 
                     </div>
 
@@ -65,7 +110,7 @@ function Body(){
 
                 <div className="card word-card" style={{flexGrow: 1}}>
                     <div className="card-num">
-                        <p>39</p>
+                        <p>{cantidadDePalabras}</p>
 
                     </div>
 
@@ -77,7 +122,7 @@ function Body(){
 
                 <div className="card sentence-card"  style={{flexGrow: 1}} >
                     <div className="card-num">
-                        <p>04</p>
+                        <p>{cantidadDeOraciones}</p>
 
                     </div>
 
@@ -96,7 +141,7 @@ function Body(){
 
             <div className = "letter-density">
                     <div className = "flex-progress-bar">
-                        <p>E</p>
+                        <p>{top5Letras[0]}</p>
 
                         <div className="progress-bar">
                             <div className="barra-1"></div>
