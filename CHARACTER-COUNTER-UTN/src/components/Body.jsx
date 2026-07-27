@@ -134,67 +134,30 @@ function Body(){
                 
             </div>
 
-            <div className = "titulo-letter-density">
-                <h2>Letter Density</h2>
+           <div className="letter-density">
+  {top5Letras.length === 0 ? (
+    <p>No characters found</p>
+  ) : (
+    top5Letras.map((item) => {
+      const porcentaje = ((item.contador / textoLimpio.length) * 100).toFixed(2);
 
-            </div>
+      return (
+        <div key={item.letra} className="flex-progress-bar">
+          <p>{item.letra.toUpperCase()}</p>
 
-            <div className = "letter-density">
-                    <div className = "flex-progress-bar">
-                        <p>{top5Letras[0]}</p>
+          <div className="progress-bar">
+            <div 
+              className="barra-1" 
+              style={{ width: `${porcentaje}%` }}
+            ></div>
+          </div>
 
-                        <div className="progress-bar">
-                            <div className="barra-1"></div>
-
-                    </div>
-                    <p>40(16.06%)</p>
-
-                    </div>
-
-                <div className="flex-progress-bar">
-                        <p>I</p>
-
-                        <div className="progress-bar">
-                            <div className="barra-2"></div>
-
-                    </div>
-                    <p>29(11.65%)</p>
-
-                    </div>
-
-                    <div className="flex-progress-bar">
-                        <p>T</p>
-                        <div className="progress-bar">
-                            <div className="barra-3"></div>
-                    </div>
-
-                    <p>28(11.24%)</p>
-
-                    </div>
-
-                <div className="flex-progress-bar">
-
-                        <p>O</p>
-
-                        <div className="progress-bar">
-                            <div className="barra-4"></div>
-
-                        </div>
-                        <p>22(08.84%)</p>
-                    
-                    </div>
-                    <div className="flex-progress-bar">
-                        <p>N</p>
-
-                        <div className="progress-bar">
-                            <div className="barra-5">
-                            </div>
-                        
-                        </div>
-                        <p>21(08.43%)</p>
-                    
-                    </div>          
-                </div>
+          <p>{item.contador}({porcentaje}%)</p>
+        </div>
+      );
+    })
+  )}
+</div>
             <p>See more ˅</p>
             
             </div>
