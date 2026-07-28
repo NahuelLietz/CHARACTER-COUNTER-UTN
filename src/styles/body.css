@@ -20,7 +20,6 @@ align-items: center;
     font-family: var(--fuente-principal);
     @font-face{
     font-family: spaceGrotesk;
-    src:url('/fonts/SpaceGrotesk-VariableFont_wght.ttf')format('truetype');
     font-weight: normal;
     font-style: normal;
     border:None;
