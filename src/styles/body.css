@@ -243,46 +243,7 @@ p{
   padding: 0;
   overflow: hidden;  
 }
-.fillE{
-  display: flex;
-  border-radius: 50px;
-  width: 11%;
-  background-color: var(--barras-de-progreso);
-  height: 9px;
-  margin:0;
-  padding: 0;
-  overflow: hidden;  
-}
-.fillI{
-  display: flex;
-  border-radius: 50px;
-  width: 11%;
-  background-color: var(--barras-de-progreso);
-  height: 9px;
-  margin:0;
-  padding: 0;
-  overflow: hidden;  
-}
-.fillO{
-  display: flex;
-  border-radius: 50px;
-  width: 8%;
-  background-color: var(--barras-de-progreso);
-  height: 9px;
-  margin:0;
-  padding: 0;
-  overflow: hidden;  
-}
-.fillU{
-  display: flex;
-  border-radius: 50px;
-  width: 8%;
-  background-color: var(--barras-de-progreso);
-  height: 9px;
-  margin:0;
-  padding: 0;
-  overflow: hidden;  
-}
+
 .titulo-letter-density{
   display:flex;
   align-items: center;

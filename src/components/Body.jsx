@@ -3,39 +3,44 @@ import icono from '../assets/icono.png'
 import icono_tema from '../assets/icono_de_tema.png'
 import '../styles/body.css'
 import { BotonDeTema } from './BotonDeTema.jsx'
+import {SeeMore} from './SeeMore.jsx'
 
 function Body(){
     /*TextArea*/
     const [textArea,setTextArea] = useState('')
-    
+
+    /*Excluir espacios*/
     const [excluirEspacios,setExcluirEspacios] = useState(false)
-    
+
+    /*Card cantidad de letras*/
     const cantidadDeLetras = excluirEspacios 
     ? textArea.replace(/\s+/g, "") 
     : textArea;
 
+    /*Cantidad De Palabras*/
     const cantidadDePalabras = textArea.trim() === ''
     ?0: textArea.trim().split(/\s+/).length;
-    
+
+    /*Cantidad De Oraciones*/
     const cantidadDeOraciones = textArea.trim() === ''?
     0 : textArea.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0).length;
-    const textAreaCompleto = textArea.trim().split(/\s+/)
+
+    /*Estadisticas letras*/
     let primeraLetra, segundaLetra, terceraLetra, cuartaLetra, quintaLetra;
-    
     const conteoLetras = [];
     const textoLimpio = textArea ? textArea.toLowerCase().replace(/[^a-záéíóúñ]/g, "") : "";
 
     for (let i = 0; i < textoLimpio.length; i++) {
-    const caracter = textoLimpio[i];
-    const elementoExistente = conteoLetras.find(item => item.letra === caracter);
-
-    if (elementoExistente) {
-        elementoExistente.contador += 1;
-    } else {
-        conteoLetras.push({ letra: caracter, contador: 1 });
+        const caracter = textoLimpio[i];
+        const elementoExistente = conteoLetras.find(item => item.letra === caracter);
+        
+        if (elementoExistente) {
+            elementoExistente.contador += 1;
+        } else {
+            conteoLetras.push({ letra: caracter, contador: 1 });
+        }
     }
-    }
-
+    /*ordeno el array por contador*/
     conteoLetras.sort((a, b) => b.contador - a.contador);
     const top5Letras = conteoLetras.slice(0, 5);
     
@@ -157,8 +162,8 @@ function Body(){
       );
     })
   )}
-</div>
-            <p>See more ˅</p>
+</div>      
+            <SeeMore/>
             
             </div>
 

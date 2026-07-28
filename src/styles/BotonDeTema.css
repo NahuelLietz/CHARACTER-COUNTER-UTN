@@ -51,3 +51,10 @@ body.dark-theme .textarea {
   color: #ffffff;
   border-color: #444444;
 }
+body.dark-theme .see-more-button{
+background-color: #2a2a2a;
+  color: #ffffff;
+  border-color: #444444;
+  border-radius: 5px;
+
+}
