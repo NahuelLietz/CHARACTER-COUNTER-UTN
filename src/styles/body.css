@@ -19,12 +19,7 @@ align-items: center;
   --fuente-principal: 'spaceGrotestk', sans-serif;
     font-family: var(--fuente-principal);
 }
-@font-face {
-  font-family: 'spaceGrotesk';
-  src: url('https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoTX2S5aV1A26o_E237s2...ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+
 body
 
 {
