@@ -4,13 +4,17 @@ import icono_tema from '../assets/icono_de_tema.png'
 import '../styles/body.css'
 import { BotonDeTema } from './BotonDeTema.jsx'
 import {SeeMore} from './SeeMore.jsx'
+import {Header} from './Header.jsx'
 
 function Body(){
-    /*TextArea*/
+    const inicio = performance.now()
+    let fin 
     const [textArea,setTextArea] = useState('')
-
+  
     /*Excluir espacios*/
     const [excluirEspacios,setExcluirEspacios] = useState(false)
+
+   
 
     /*Card cantidad de letras*/
     const cantidadDeLetras = excluirEspacios 
@@ -26,7 +30,7 @@ function Body(){
     0 : textArea.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0).length;
 
     /*Estadisticas letras*/
-    let primeraLetra, segundaLetra, terceraLetra, cuartaLetra, quintaLetra;
+    
     const conteoLetras = [];
     const textoLimpio = textArea ? textArea.toLowerCase().replace(/[^a-záéíóúñ]/g, "") : "";
 
@@ -49,54 +53,37 @@ function Body(){
         
 
             <div className = "main-card-flex">
-
-                <div className = "header-flex">
-                    <div className = "header-card">   
-                    <img 
-                    src = {icono} 
-                    alt = "icono de la aplicacion" 
-                    id='icono-de-la-aplicacion'/>
-                    
-                    <h2>Character Counter</h2>   
-
-                    </div>
-
-                <BotonDeTema/>
-                </div>
-            <div className = "tittle-card">
-                <h1><span>Analyze your text in real-time.</span></h1>
-            </div>  
-
-            <textarea
-                
-                className='textarea'
-                rows="5"
-                value={textArea}
-                onChange={(e) => setTextArea(e.target.value)}
-                placeholder="Escribe algo aquí..."
-                spellCheck={false} /* desabillita el autocorrector de la web */
+                <Header></Header>
+                 <textarea
+                    className='textarea'
+                    rows="5"
+                    value={textArea}
+                    onChange={(e) => setTextArea(e.target.value)}
+                    placeholder="Escribe algo aquí..."
+                    spellCheck={false} /* desabillita el autocorrector de la web */
                 />
+            
                         
-            <div className = "checkbox">
-                
-                <div className = "checkbox-pointer">
+                <div className = "checkbox">
+                    
+                    <div className = "checkbox-pointer">
 
-                    <label 
-                    htmlFor="exclude spaces" 
-                    style={{ cursor: 'pointer' }}
-                    >
-                        <input type="checkbox" 
-                        name="exclude spaces" 
-                        id="exclude spaces"
-                        checked = {excluirEspacios}
-                        onChange={(e) => setExcluirEspacios(e.target.checked)}
-                        />
-                        Exclude spaces
-                    </label>
-                </div>  
-                <p>Approx. reading time: 1minute </p>
-
-            </div>
+                        <label 
+                        htmlFor="exclude spaces" 
+                        style={{ cursor: 'pointer' }}
+                        >
+                            <input type="checkbox" 
+                            name="exclude spaces" 
+                            id="exclude spaces"
+                            checked = {excluirEspacios}
+                            onChange={(e) => setExcluirEspacios(e.target.checked)}
+                            />
+                            Exclude spaces
+                        </label>
+                    </div>
+                    {!textArea?(<p></p>):(<p>Approx. reading time: {(performance.now()-inicio).toFixed(2)} ms</p>)}
+        
+                </div>
             
 
             <div className="counter-flexbox">
@@ -140,32 +127,37 @@ function Body(){
             </div>
 
            <div className="letter-density">
-  {top5Letras.length === 0 ? (
-    <p>No characters found</p>
-  ) : (
-    top5Letras.map((item) => {
-      const porcentaje = ((item.contador / textoLimpio.length) * 100).toFixed(2);
+            {conteoLetras.length === 0 ? (<p>No characters found</p>) :(top5Letras.map(  
+                (item) => 
+                    {
+                    const porcentaje = ((item.contador / textoLimpio.length) * 100).toFixed(2);
+                    return (
+                            <div key={item.letra} className="flex-progress-bar">
+                            <p>{item.letra.toUpperCase()}</p>
 
-      return (
-        <div key={item.letra} className="flex-progress-bar">
-          <p>{item.letra.toUpperCase()}</p>
+                            <div className="progress-bar">
+                                <div 
+                                className="barra-1" 
+                                style={{ width: `${porcentaje}%` }}
+                                ></div>
+                            </div>
 
-          <div className="progress-bar">
-            <div 
-              className="barra-1" 
-              style={{ width: `${porcentaje}%` }}
-            ></div>
-          </div>
-
-          <p>{item.contador}({porcentaje}%)</p>
-        </div>
-      );
-    })
-  )}
-</div>      
-            <SeeMore/>
+                                <p>{item.contador}({porcentaje}%)</p>
+                            </div>
+                            )
+                    }
+                )
+                )
+                    
+            }
+            <SeeMore
+            conteoLetras={conteoLetras} 
+            totalTextoLimpio={textoLimpio.length}/>
+            </div>      
+            </div> 
             
-            </div>
+            
+            
 
         
     
