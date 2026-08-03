@@ -1,6 +1,5 @@
 
-/* Estilos por defecto (Modo Claro) */
-/* Modo Claro por defecto */
+
 :root {
   --fondo-principal: #F4F5F9;
   --fondo-de-cards-textarea: #FFFFFF;
@@ -14,7 +13,6 @@
     
 }
 
-/* Modo Oscuro cuando se activa la clase */
 body.dark-theme {
   --fondo-principal: #12131A;
   --fondo-de-cards-textarea: #1C1F2A;
@@ -36,7 +34,7 @@ body {
   background-color: #ffffff;
 }
 
-/* Estilos cuando la clase .dark-theme está activa */
+
 body.dark-theme {
   background-color: #121212;
   color: #ffffff;

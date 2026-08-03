@@ -127,29 +127,6 @@ function Body(){
             </div>
 
            <div className="letter-density">
-            {conteoLetras.length === 0 ? (<p>No characters found</p>) :(top5Letras.map(  
-                (item) => 
-                    {
-                    const porcentaje = ((item.contador / textoLimpio.length) * 100).toFixed(2);
-                    return (
-                            <div key={item.letra} className="flex-progress-bar">
-                            <p>{item.letra.toUpperCase()}</p>
-
-                            <div className="progress-bar">
-                                <div 
-                                className="barra-1" 
-                                style={{ width: `${porcentaje}%` }}
-                                ></div>
-                            </div>
-
-                                <p>{item.contador}({porcentaje}%)</p>
-                            </div>
-                            )
-                    }
-                )
-                )
-                    
-            }
             <SeeMore
             conteoLetras={conteoLetras} 
             totalTextoLimpio={textoLimpio.length}/>
